@@ -1,0 +1,36 @@
+package com.shgame.ui;
+
+import com.badlogic.gdx.math.Rectangle;
+import com.shgame.gameworld.GameRenderer;
+
+public class SinglePlay {
+
+	public float btnWidth,btnHeight;
+	public float wx,wy;
+	public Rectangle bounds;
+	
+	public SinglePlay(float width,float height){
+		btnWidth = width/5;
+		btnHeight = height/10;
+		wx = width - width/3;
+		wy = height - height/3;
+		
+		bounds = new Rectangle(wx, wy, btnWidth, btnHeight);
+	}
+	
+	public void update(float delta){
+		
+	}
+	
+	public void offClick(){
+		GameRenderer.touchBtn=false;
+	}
+	
+	public void onClick(int touchX, int touchY){
+		if(bounds.contains(touchX, touchY))
+			{
+			GameRenderer.touchBtn=true;
+			GameRenderer.nmbBtn=1;
+			}
+	}
+}

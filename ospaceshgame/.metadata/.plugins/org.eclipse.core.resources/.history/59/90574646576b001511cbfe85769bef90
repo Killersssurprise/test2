@@ -1,0 +1,60 @@
+package com.shgame.singleplay;
+
+import com.shgame.uiSingleplay.Bullet;
+import com.shgame.uiSingleplay.Control;
+import com.shgame.uiSingleplay.Fire;
+import com.shgame.uiSingleplay.Guy;
+import com.shgame.uiSingleplay.Reload;
+import com.shgame.uiSingleplay.Seal;
+
+public class SinglePlayWorld {
+
+	private Control controlBtn;
+	private Fire fireBtn;
+	private Guy guyBtn;
+	private Reload reloadBtn;
+	private Bullet bul;
+	private Seal seal;
+	
+	public SinglePlayWorld(float width, float height){
+		controlBtn = new Control(width, height);
+		fireBtn = new Fire(width, height);
+		guyBtn = new Guy(width, height);
+		reloadBtn = new Reload(width, height);
+		bul = new Bullet(width, height);
+		seal = new Seal(width,height);
+	}
+	
+	public void update(float delta){
+		controlBtn.update(delta);
+		fireBtn.update(delta);
+		guyBtn.update(delta);
+		reloadBtn.update(delta);
+		bul.update(delta);
+		seal.update(delta);
+	}
+	
+	public Control getControlBtn(){
+		return controlBtn;
+	}
+	
+	public Fire getFireBtn(){
+		return fireBtn;
+	}
+	
+	public Guy getGuyBtn(){
+		return guyBtn;
+	}
+	
+	public Reload getReloadBtn(){
+		return reloadBtn;
+	}
+	
+	public Bullet getBul(){
+		return bul;
+	}
+	
+	public Seal getSeal(){
+		return seal;
+	}
+}

@@ -1,0 +1,419 @@
+package com.shgame.shhelpers;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
+public class AssetLoader {
+
+	public static Texture texture_bg,texture_btn;
+    public static TextureRegion bg;
+
+    public static TextureRegion singlePlayBtn,singlePlayBtnDown;
+    public static TextureRegion multiPlayerBtn,multiPlayerBtnDown;
+    public static TextureRegion optionsBtn,optionsBtnDown;
+    public static TextureRegion helpAboutBtn,helpAboutBtnDown;
+
+    public static Texture texture_ha;
+    public static TextureRegion bg_ha;
+    public static Texture texture_p1,texture_p2,texture_p3,texture_p4,texture_p5,texture_p6,texture_p7,
+    texture_p8,texture_p9,texture_p10,texture_p11;
+    public static TextureRegion p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11;
+    
+    public static Texture texture_e1,texture_e2,texture_e3,texture_e4,texture_e5,texture_e6,
+    texture_e7,texture_e8;
+    public static TextureRegion e1,e2,e3,e4,e5,e6,e7,e8;
+    
+    public static Texture texture_habtn;
+    public static TextureRegion generalBtn, generalBtnDown;
+    public static TextureRegion weaponBtn, weaponBtnDown;
+    public static TextureRegion enemyBtn, enemyBtnDown;
+    public static TextureRegion aboutBtn, aboutBtnDown;
+    public static TextureRegion backBtn, backBtnDown;    
+    
+    public static Texture texture_single,texture_control,texture_fire,texture_reload,texture_guy;
+    public static TextureRegion bg_sp;
+    public static TextureRegion control,fire,reload,guy;
+    public static Texture texture_bullet, texture_snip;
+    public static TextureRegion bullet, snip;
+    public static Texture texture_seal;
+    public static TextureRegion seal;
+    
+    public static Texture texture_cw1, texture_cw2, texture_cw3, texture_cw4, texture_cw5, texture_cw6, texture_cw7,
+    texture_cw8, texture_cw9, texture_cw10;
+    public static TextureRegion cw1, cw2, cw3, cw4, cw5, cw6, cw7, cw8, cw9, cw10;
+    
+    public static BitmapFont text;
+    
+    public static Texture texture_scoreboard;
+    public static TextureRegion scoreboard;
+    
+    public static Sound soundFire1;
+    
+    public float screenWidth = Gdx.graphics.getWidth();
+    public float screenHeight = Gdx.graphics.getHeight();
+    
+    public static void load() {
+
+        texture_bg = new Texture(Gdx.files.internal("data/gfx/newmenu.png"));
+        texture_bg.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+
+        bg = new TextureRegion(texture_bg, 0, 0, texture_bg.getWidth(), texture_bg.getHeight());
+        bg.flip(false, true);
+        
+        texture_btn = new Texture(Gdx.files.internal("data/gfx/buttons.jpg"));
+        texture_btn.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        singlePlayBtnDown = new TextureRegion(texture_btn, 0, 0, 100, 50);
+        singlePlayBtnDown.flip(false, true);
+        
+        singlePlayBtn = new TextureRegion(texture_btn, 100, 0, 100, 50);
+        singlePlayBtn.flip(false, true);
+        
+        multiPlayerBtnDown = new TextureRegion(texture_btn, 0, 50, 100, 50);
+        multiPlayerBtnDown.flip(false, true);
+
+        multiPlayerBtn = new TextureRegion(texture_btn, 100, 50, 100, 50);
+        multiPlayerBtn.flip(false, true);
+        
+        optionsBtnDown = new TextureRegion(texture_btn, 0, 100, 100, 50);
+        optionsBtnDown.flip(false, true);
+        
+        optionsBtn = new TextureRegion(texture_btn, 100, 100, 100, 50);
+        optionsBtn.flip(false, true);
+        
+        helpAboutBtnDown = new TextureRegion(texture_btn, 0, 150, 100, 50);
+        helpAboutBtnDown.flip(false, true);
+        
+        helpAboutBtn = new TextureRegion(texture_btn, 100, 150, 100, 50);
+        helpAboutBtn.flip(false, true);
+        
+        
+        //HELPABOUTSCREEN
+        texture_ha = new Texture(Gdx.files.internal("data/gfx/helpmenu.bmp"));
+        texture_ha.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+
+        bg_ha = new TextureRegion(texture_ha, 0, 0, texture_ha.getWidth(), texture_ha.getHeight());
+        bg_ha.flip(false, true);
+        
+        text = new BitmapFont();
+
+      //--------------------peoples
+        
+        texture_p1 = new Texture(Gdx.files.internal("data/gfx/haweapon/p1.png"));
+        texture_p1.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        p1 = new TextureRegion(texture_p1, 0, 0, texture_p1.getWidth(), texture_p1.getHeight());
+        p1.flip(false, true);
+        
+        texture_p2 = new Texture(Gdx.files.internal("data/gfx/haweapon/p2.png"));
+        texture_p2.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+
+        p2 = new TextureRegion(texture_p2, 0, 0, texture_p2.getWidth(), texture_p2.getHeight());
+        p2.flip(false, true);
+        
+        texture_p3 = new Texture(Gdx.files.internal("data/gfx/haweapon/p3.png"));
+        texture_p3.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+
+        p3 = new TextureRegion(texture_p3, 0, 0, texture_p3.getWidth(), texture_p3.getHeight());
+        p3.flip(false, true);
+        
+        texture_p4 = new Texture(Gdx.files.internal("data/gfx/haweapon/p4.png"));
+        texture_p4.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+
+        p4 = new TextureRegion(texture_p4, 0, 0, texture_p4.getWidth(), texture_p4.getHeight());
+        p4.flip(false, true);
+        
+        texture_p5 = new Texture(Gdx.files.internal("data/gfx/haweapon/p5.png"));
+        texture_p5.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+
+        p5 = new TextureRegion(texture_p5, 0, 0, texture_p5.getWidth(), texture_p5.getHeight());
+        p5.flip(false, true);
+        
+        texture_p6 = new Texture(Gdx.files.internal("data/gfx/haweapon/p6.png"));
+        texture_p6.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+
+        p6 = new TextureRegion(texture_p6, 0, 0, texture_p6.getWidth(), texture_p6.getHeight());
+        p6.flip(false, true);
+        
+        texture_p7 = new Texture(Gdx.files.internal("data/gfx/haweapon/p7.png"));
+        texture_p7.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+
+        p7 = new TextureRegion(texture_p7, 0, 0, texture_p7.getWidth(), texture_p7.getHeight());
+        p7.flip(false, true);
+        
+        texture_p8 = new Texture(Gdx.files.internal("data/gfx/haweapon/p8.png"));
+        texture_p8.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+
+        p8 = new TextureRegion(texture_p8, 0, 0, texture_p8.getWidth(), texture_p8.getHeight());
+        p8.flip(false, true);
+        
+        texture_p9 = new Texture(Gdx.files.internal("data/gfx/haweapon/p9.png"));
+        texture_p9.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+
+        p9 = new TextureRegion(texture_p9, 0, 0, texture_p9.getWidth(), texture_p9.getHeight());
+        p9.flip(false, true);
+        
+        texture_p10 = new Texture(Gdx.files.internal("data/gfx/haweapon/p10.png"));
+        texture_p10.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+
+        p10 = new TextureRegion(texture_p10, 0, 0, texture_p10.getWidth(), texture_p10.getHeight());
+        p10.flip(false, true);
+        
+        texture_p11 = new Texture(Gdx.files.internal("data/gfx/haweapon/p11.png"));
+        texture_p11.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+
+        p11 = new TextureRegion(texture_p11, 0, 0, texture_p11.getWidth(), texture_p11.getHeight());
+        p11.flip(false, true);
+        
+        //----------------------enemys
+        
+        texture_e1 = new Texture(Gdx.files.internal("data/gfx/haenemy/e1.png"));
+        texture_e1.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        e1 = new TextureRegion(texture_e1, 0, 0, texture_e1.getWidth(), texture_e1.getHeight());
+        e1.flip(false, true);
+        
+        texture_e2 = new Texture(Gdx.files.internal("data/gfx/haenemy/e2.png"));
+        texture_e2.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        e2 = new TextureRegion(texture_e2, 0, 0, texture_e2.getWidth(), texture_e2.getHeight());
+        e2.flip(false, true);
+        
+        texture_e3 = new Texture(Gdx.files.internal("data/gfx/haenemy/e3.png"));
+        texture_e3.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        e3 = new TextureRegion(texture_e3, 0, 0, texture_e3.getWidth(), texture_e3.getHeight());
+        e3.flip(false, true);
+        
+        texture_e4 = new Texture(Gdx.files.internal("data/gfx/haenemy/e4.png"));
+        texture_e4.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        e4 = new TextureRegion(texture_e4, 0, 0, texture_e4.getWidth(), texture_e4.getHeight());
+        e4.flip(false, true);
+        
+        texture_e5 = new Texture(Gdx.files.internal("data/gfx/haenemy/e5.png"));
+        texture_e5.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        e5 = new TextureRegion(texture_e5, 0, 0, texture_e5.getWidth(), texture_e5.getHeight());
+        e5.flip(false, true);
+        
+        texture_e6 = new Texture(Gdx.files.internal("data/gfx/haenemy/e6.png"));
+        texture_e6.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        e6 = new TextureRegion(texture_e6, 0, 0, texture_e6.getWidth(), texture_e6.getHeight());
+        e6.flip(false, true);
+        
+        texture_e7 = new Texture(Gdx.files.internal("data/gfx/haenemy/e7.png"));
+        texture_e7.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        e7 = new TextureRegion(texture_e7, 0, 0, texture_e7.getWidth(), texture_e7.getHeight());
+        e7.flip(false, true);
+        
+        texture_e8 = new Texture(Gdx.files.internal("data/gfx/haenemy/e8.png"));
+        texture_e8.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        e8 = new TextureRegion(texture_e8, 0, 0, texture_e8.getWidth(), texture_e8.getHeight());
+        e8.flip(false, true);
+        
+        texture_habtn = new Texture(Gdx.files.internal("data/gfx/buttonsHA.jpg"));
+        texture_habtn.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        generalBtnDown = new TextureRegion(texture_habtn, 0, 0, 100, 50);
+        generalBtnDown.flip(false, true);
+        
+        generalBtn = new TextureRegion(texture_habtn, 100, 0, 100, 50);
+        generalBtn.flip(false, true);
+        
+        weaponBtnDown = new TextureRegion(texture_habtn, 0, 50, 100, 50);
+        weaponBtnDown.flip(false, true);
+
+        weaponBtn = new TextureRegion(texture_habtn, 100, 50, 100, 50);
+        weaponBtn.flip(false, true);
+        
+        enemyBtnDown = new TextureRegion(texture_habtn, 0, 100, 100, 50);
+        enemyBtnDown.flip(false, true);
+        
+        enemyBtn = new TextureRegion(texture_habtn, 100, 100, 100, 50);
+        enemyBtn.flip(false, true);
+        
+        aboutBtnDown = new TextureRegion(texture_habtn, 0, 150, 100, 50);
+        aboutBtnDown.flip(false, true);
+        
+        aboutBtn = new TextureRegion(texture_habtn, 100, 150, 100, 50);
+        aboutBtn.flip(false, true);
+        
+        backBtnDown = new TextureRegion(texture_habtn, 0, 200, 100, 50);
+        backBtnDown.flip(false, true);
+        
+        backBtn = new TextureRegion(texture_habtn, 100, 200, 100, 50);
+        backBtn.flip(false, true);
+        
+        //----------------singlePlaySCREEN
+        texture_single = new Texture(Gdx.files.internal("data/gfx/013_BMP.bmp"));
+        texture_single.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        bg_sp = new TextureRegion(texture_single, 0, 0, texture_single.getWidth(), texture_single.getHeight());
+        bg_sp.flip(false, true);
+        
+        texture_control = new Texture(Gdx.files.internal("data/gfx/onscreen_control_base.png"));
+        texture_control.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        texture_reload = new Texture(Gdx.files.internal("data/gfx/reloading.png"));
+        texture_reload.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        texture_fire = new Texture(Gdx.files.internal("data/gfx/sniper.png"));
+        texture_fire.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        texture_guy = new Texture(Gdx.files.internal("data/gfx/091_BMP.png"));
+        texture_guy.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        control = new TextureRegion(texture_control, 0, 0, texture_control.getWidth(), texture_control.getHeight());
+        control.flip(false, true);
+        
+        reload = new TextureRegion(texture_reload, 0, 0, texture_reload.getWidth(), texture_reload.getHeight());
+        reload.flip(false, true);
+        
+        fire = new TextureRegion(texture_fire, 0, 0, texture_fire.getWidth(), texture_fire.getHeight());
+        fire.flip(false, true);
+        
+        guy = new TextureRegion(texture_guy, 0, 0, texture_guy.getWidth(), texture_guy.getHeight());
+        guy.flip(false, true);
+        
+        texture_bullet = new Texture(Gdx.files.internal("data/gfx/bullet_1.png"));
+        texture_bullet.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        texture_snip = new Texture(Gdx.files.internal("data/gfx/fire.png"));
+        texture_snip.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        bullet = new TextureRegion(texture_bullet, 0, 0, texture_bullet.getWidth(), texture_bullet.getHeight());
+        bullet.flip(false, true);
+        
+        snip = new TextureRegion(texture_snip, 0, 0, texture_snip.getWidth(), texture_snip.getHeight());
+        snip.flip(false, true);
+        
+        soundFire1 = Gdx.audio.newSound(Gdx.files.internal("data/mfx/fire1.wav"));
+        
+        texture_seal = new Texture(Gdx.files.internal("data/gfx/haenemy/e1.png"));
+        texture_seal.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        seal = new TextureRegion(texture_seal, 0, texture_seal.getHeight()/3, texture_seal.getWidth(), texture_seal.getHeight()/3);
+        seal.flip(false, true);
+        
+        //----------------COST WEAPON
+        texture_cw1 = new Texture(Gdx.files.internal("data/gfx/costweapon/cw1.png"));
+        texture_cw1.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        cw1 = new TextureRegion(texture_cw1, 0, 0, texture_cw1.getWidth(), texture_cw1.getHeight());
+        cw1.flip(false, true);
+        
+        texture_cw2 = new Texture(Gdx.files.internal("data/gfx/costweapon/cw2.png"));
+        texture_cw2.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        cw2 = new TextureRegion(texture_cw2, 0, 0, texture_cw2.getWidth(), texture_cw2.getHeight());
+        cw2.flip(false, true);
+        
+        texture_cw3 = new Texture(Gdx.files.internal("data/gfx/costweapon/cw3.png"));
+        texture_cw3.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        cw3 = new TextureRegion(texture_cw3, 0, 0, texture_cw3.getWidth(), texture_cw3.getHeight());
+        cw3.flip(false, true);
+        
+        texture_cw4 = new Texture(Gdx.files.internal("data/gfx/costweapon/cw4.png"));
+        texture_cw4.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        cw4 = new TextureRegion(texture_cw4, 0, 0, texture_cw4.getWidth(), texture_cw4.getHeight());
+        cw4.flip(false, true);
+        
+        texture_cw5 = new Texture(Gdx.files.internal("data/gfx/costweapon/cw5.png"));
+        texture_cw5.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        cw5 = new TextureRegion(texture_cw5, 0, 0, texture_cw5.getWidth(), texture_cw5.getHeight());
+        cw5.flip(false, true);
+        
+        texture_cw6 = new Texture(Gdx.files.internal("data/gfx/costweapon/cw6.png"));
+        texture_cw6.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        cw6 = new TextureRegion(texture_cw6, 0, 0, texture_cw6.getWidth(), texture_cw6.getHeight());
+        cw6.flip(false, true);
+        
+        texture_cw7 = new Texture(Gdx.files.internal("data/gfx/costweapon/cw7.png"));
+        texture_cw7.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        cw7 = new TextureRegion(texture_cw7, 0, 0, texture_cw7.getWidth(), texture_cw7.getHeight());
+        cw7.flip(false, true);
+        
+        texture_cw8 = new Texture(Gdx.files.internal("data/gfx/costweapon/cw8.png"));
+        texture_cw8.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        cw8 = new TextureRegion(texture_cw8, 0, 0, texture_cw8.getWidth(), texture_cw8.getHeight());
+        cw8.flip(false, true);
+        
+        texture_cw9 = new Texture(Gdx.files.internal("data/gfx/costweapon/cw9.png"));
+        texture_cw9.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        cw9 = new TextureRegion(texture_cw9, 0, 0, texture_cw9.getWidth(), texture_cw9.getHeight());
+        cw9.flip(false, true);
+        
+        texture_cw10 = new Texture(Gdx.files.internal("data/gfx/costweapon/cw10.png"));
+        texture_cw10.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        cw10 = new TextureRegion(texture_cw10, 0, 0, texture_cw10.getWidth(), texture_cw10.getHeight());
+        cw10.flip(false, true);
+        
+        texture_scoreboard = new Texture(Gdx.files.internal("data/gfx/scoreboard.png"));
+        texture_scoreboard.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        
+        scoreboard = new TextureRegion(texture_scoreboard, 0, 0, texture_scoreboard.getWidth(), texture_scoreboard.getHeight());
+        scoreboard.flip(false, true);
+    }
+    
+    public static void dispose() {
+        // Мы должны избавляться от текстур, когда заканчивает работать с объектом в котором есть текстуры
+        texture_bg.dispose();
+        texture_btn.dispose();
+        texture_ha.dispose();
+        texture_habtn.dispose();
+        texture_p1.dispose();
+        texture_p2.dispose();
+        texture_p3.dispose();
+        texture_p4.dispose();
+        texture_p5.dispose();
+        texture_p6.dispose();
+        texture_p7.dispose();
+        texture_p8.dispose();
+        texture_p9.dispose();
+        texture_p10.dispose();
+        texture_p11.dispose();
+        texture_e1.dispose();
+        texture_e2.dispose();
+        texture_e3.dispose();
+        texture_e4.dispose();
+        texture_e5.dispose();
+        texture_e6.dispose();
+        texture_e7.dispose();
+        texture_e8.dispose();
+        text.dispose();
+        texture_cw1.dispose();
+        texture_cw2.dispose();
+        texture_cw3.dispose();
+        texture_cw4.dispose();
+        texture_cw5.dispose();
+        texture_cw6.dispose();
+        texture_cw7.dispose();
+        texture_cw8.dispose();
+        texture_cw9.dispose();
+        texture_cw10.dispose();
+        texture_single.dispose();
+        texture_guy.dispose();
+        texture_reload.dispose();
+        texture_control.dispose();
+        texture_fire.dispose();
+        texture_bullet.dispose();
+        texture_snip.dispose();
+        soundFire1.dispose();
+    }
+}

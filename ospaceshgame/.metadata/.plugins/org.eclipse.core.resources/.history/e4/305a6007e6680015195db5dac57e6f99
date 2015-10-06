@@ -1,0 +1,61 @@
+package com.shgame.uiSingleplay;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.math.Rectangle;
+import com.shgame.singleplay.SinglePlayRenderer;
+
+public class Fire {
+
+	public float btnWidth,btnHeight;
+	public float wx,wy;
+	public Rectangle bounds;
+	public static boolean fire_bul;
+	public float path;
+	
+	public Fire(float width,float height){
+		btnWidth = width/5;
+		btnHeight = height/5;
+		wx = 0;
+		wy = height - height/5;
+		
+		bounds = new Rectangle(wx, wy, btnWidth, btnHeight);
+	}
+	
+	public void update(float delta){
+
+			/*try {
+				Thread.sleep(1000, 0);
+				} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				}*/
+		Gdx.app.log("XY", "fire_bul :" + fire_bul);
+		if(fire_bul)
+			SinglePlayRenderer.bx -= 70 * Gdx.graphics.getDeltaTime();
+		if(SinglePlayRenderer.bx <= 0)
+		{
+			SinglePlayRenderer.bx = SinglePlayRenderer.gx + Guy.btnWidth/2;
+			SinglePlayRenderer.by = SinglePlayRenderer.gy + Guy.btnHeight/2;
+			fire_bul = false;
+		}
+			
+
+	}
+	
+	public void offClick(int touchX, int touchY){
+		if(bounds.contains(touchX, touchY))
+		{
+		
+			//fire_bul = false;
+			//SinglePlayRenderer.bx = SinglePlayRenderer.gx + Guy.btnWidth/2;
+		}
+	}
+	
+	public void onClick(int touchX, int touchY){
+		if(bounds.contains(touchX, touchY))
+			{
+			Gdx.app.log("XY", "bx: " + SinglePlayRenderer.bx);
+			fire_bul = true;
+			}
+	}
+}

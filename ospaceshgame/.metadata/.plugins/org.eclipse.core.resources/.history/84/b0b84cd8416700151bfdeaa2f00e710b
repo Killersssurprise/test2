@@ -1,0 +1,10 @@
+package com.shgame.multiplayerworld;
+
+import com.shgame.game.MySHgame;
+
+public class MultiplayerRenderer {
+
+	public MultiplayerRenderer(MultiplayerWorld world, float width, float height, MySHgame game){
+		
+	}
+}

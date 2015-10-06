@@ -1,0 +1,33 @@
+package com.shgame.uiHelpAbout.uiEnemy;
+
+import com.badlogic.gdx.math.Rectangle;
+
+public class Enemy_4 {
+	public float btnWidth,btnHeight;
+	public float wx,wy;
+	public Rectangle bounds;
+	
+	public Enemy_4(float width,float height){
+		btnWidth = (width-width/3)/8;
+		btnHeight = height/11;
+		wx = btnWidth*3;
+		wy = height/5.517f;
+		
+		bounds = new Rectangle(wx, wy, btnWidth, btnHeight);
+	}
+	
+	public void update(float delta){
+		
+	}
+	
+	public void offClick(){
+
+	}
+	
+	public void onClick(int touchX, int touchY){
+		if(bounds.contains(touchX, touchY))
+			{
+
+			}
+	}
+}

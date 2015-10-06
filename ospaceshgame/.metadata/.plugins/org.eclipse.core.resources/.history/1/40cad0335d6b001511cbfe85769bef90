@@ -1,0 +1,176 @@
+package com.shgame.singleplay;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Rectangle;
+import com.shgame.shhelpers.AssetLoader;
+import com.shgame.uiSingleplay.Bullet;
+import com.shgame.uiSingleplay.Control;
+import com.shgame.uiSingleplay.Fire;
+import com.shgame.uiSingleplay.Guy;
+import com.shgame.uiSingleplay.Reload;
+import com.shgame.uiSingleplay.Seal;
+import com.shgame.uiSingleplay.uiCostweapon.Costweapon_1;
+import com.shgame.uiSingleplay.uiCostweapon.Costweapon_10;
+import com.shgame.uiSingleplay.uiCostweapon.Costweapon_2;
+import com.shgame.uiSingleplay.uiCostweapon.Costweapon_3;
+import com.shgame.uiSingleplay.uiCostweapon.Costweapon_4;
+import com.shgame.uiSingleplay.uiCostweapon.Costweapon_5;
+import com.shgame.uiSingleplay.uiCostweapon.Costweapon_6;
+import com.shgame.uiSingleplay.uiCostweapon.Costweapon_7;
+import com.shgame.uiSingleplay.uiCostweapon.Costweapon_8;
+import com.shgame.uiSingleplay.uiCostweapon.Costweapon_9;
+
+public class SinglePlayRenderer {
+
+	private SinglePlayWorld myWorld;
+	private OrthographicCamera cam;
+	private ShapeRenderer shapeRenderer;
+	private SpriteBatch batcher;
+	private TextureRegion bg_sp, reload, control, guy, fire;
+	private TextureRegion bullet, snip;
+	private TextureRegion regSeal;
+	private TextureRegion cw1, cw2, cw3, cw4, cw5, cw6, cw7, cw8, cw9, cw10;
+	
+	public Control controlBtn;
+	public Fire fireBtn;
+	public Reload reloadBtn;
+	public Guy guyBtn;
+	public Bullet bul;
+	public Seal seal;
+	
+	public Costweapon_1 cw1Btn;
+	public Costweapon_2 cw2Btn;
+	public Costweapon_3 cw3Btn;
+	public Costweapon_4 cw4Btn;
+	public Costweapon_5 cw5Btn;
+	public Costweapon_6 cw6Btn;
+	public Costweapon_7 cw7Btn;
+	public Costweapon_8 cw8Btn;
+	public Costweapon_9 cw9Btn;
+	public Costweapon_10 cw10Btn;
+	
+	public Rectangle boundSeal, boundBul;
+	
+	public float gameWidth,gameHeight;
+	public float rx,ry,rWidth,rHeight;
+	public float cx, cy, cWidth, cHeight;
+	public static float gx, gy, gWidth, gHeight;
+	public float fx, fy, fWidth, fHeight;
+	public static float bx, by, bWidth, bHeight;
+	public static float sx, sy, sWidth, sHeight;
+	public static float cwx1,cwx2,cwx3,cwx4,cwx5,cwx6,cwx7,cwx8,cwx9,cwx10;
+	public static float cwy, cwWidth, cwHeight;
+	
+	public SinglePlayRenderer(SinglePlayWorld world, float width, float height){
+		myWorld = world;
+		gameWidth = width;
+		gameHeight = height;
+		
+		cam = new OrthographicCamera();
+	    cam.setToOrtho(true, width, height);
+	    
+	    batcher = new SpriteBatch();
+        batcher.setProjectionMatrix(cam.combined);
+        
+	    shapeRenderer = new ShapeRenderer();
+	    shapeRenderer.setProjectionMatrix(cam.combined);
+	    
+	    initAssets();
+	    
+	    controlBtn = world.getControlBtn();
+	    fireBtn = world.getFireBtn();
+	    reloadBtn = world.getReloadBtn();
+	    guyBtn = world.getGuyBtn();
+	    bul = world.getBul();
+	    seal = world.getSeal();
+	    
+	    cx = controlBtn.wx;
+	    cy = controlBtn.wy;
+	    cWidth = controlBtn.btnWidth;
+	    cHeight = controlBtn.btnHeight;
+	    
+	    rx = reloadBtn.wx;
+	    ry = reloadBtn.wy;
+	    rWidth = reloadBtn.btnWidth;
+	    rHeight = reloadBtn.btnHeight;
+	    
+		gx = guyBtn.wx;
+	    gy = guyBtn.wy;
+	    gWidth = guyBtn.btnWidth;
+	    gHeight = guyBtn.btnHeight;
+	    
+	    fx = fireBtn.wx;
+	    fy = fireBtn.wy;
+	    fWidth = fireBtn.btnWidth;
+	    fHeight = fireBtn.btnHeight;
+	    
+	    bx = bul.wx;
+	    by = bul.wy;
+	    bWidth = bul.btnWidth;
+	    bHeight = bul.btnHeight;
+	    
+	    sx = seal.wx;
+	    sy = seal.wy;
+	    sWidth = seal.wWidth;
+	    sHeight = seal.wHeight;
+	    
+	    boundSeal = seal.bounds;
+	    boundBul = bul.bounds;
+	    
+	    cwx1 = 
+	}
+	
+	private void initAssets() {
+        bg_sp = AssetLoader.bg_sp;
+        guy = AssetLoader.p11;
+        control = AssetLoader.control;
+        fire = AssetLoader.fire;
+        reload = AssetLoader.reload;
+        bullet = AssetLoader.bullet;
+        snip = AssetLoader.snip;
+        regSeal = AssetLoader.seal;
+        cw1 = AssetLoader.cw1;
+        cw2 = AssetLoader.cw2;
+        cw3 = AssetLoader.cw3;
+        cw4 = AssetLoader.cw4;
+        cw5 = AssetLoader.cw5;
+        cw6 = AssetLoader.cw6;
+        cw7 = AssetLoader.cw7;
+        cw8 = AssetLoader.cw8;
+        cw9 = AssetLoader.cw9;
+        cw10 = AssetLoader.cw10;
+	}
+	
+	public void render(){
+		
+		//Gdx.app.log("bulshit", "seal.alive: " + seal.alive + " boundSeal.x: " + boundSeal.x + " boundSeal.y: " + boundSeal.y);
+		Gdx.app.log("bulshit", "boudBul.x: " + boundBul.x + " boundBul.y: " + boundBul.y);
+		Gdx.app.log("height", "sHeight - " + sHeight + " sy - " + sy);
+		//Gdx.app.log("bul", )
+		batcher.begin();
+        batcher.disableBlending();
+        batcher.draw(bg_sp, 0, 0, gameWidth, gameHeight);
+        //batcher.draw();
+        batcher.enableBlending();
+        batcher.draw(control, cx, cy, cWidth, cHeight);
+        batcher.draw(reload, rx, ry, rWidth, rHeight);
+        batcher.draw(fire, fx, fy, fWidth, fHeight);
+        batcher.draw(snip, gx-gWidth, gy+(gHeight/3), 10, 10);
+        batcher.draw(bullet, bx, by, bWidth, bHeight);
+        
+        batcher.draw(regSeal, sx, sy, sWidth, sHeight);
+        
+        batcher.draw(guy, gx, gy, gWidth, gHeight);
+        
+        if(fireBtn.fire_bul)
+        	if(boundSeal.contains(boundBul))
+        		seal.alive = false;
+        	
+        
+        batcher.end();
+	}
+}

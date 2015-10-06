@@ -1,0 +1,88 @@
+package com.shgame.helpaboutworld;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.shgame.game.MySHgame;
+import com.shgame.shhelpers.AssetLoader;
+import com.shgame.uiHelpAbout.About;
+import com.shgame.uiHelpAbout.Back;
+import com.shgame.uiHelpAbout.Enemy;
+import com.shgame.uiHelpAbout.General;
+import com.shgame.uiHelpAbout.Weapon;
+
+
+public class HelpAboutRenderer {
+
+	private MySHgame game;
+	private HelpAboutWorld myWorld;
+	private OrthographicCamera cam;
+	private ShapeRenderer shapeRenderer;
+	private SpriteBatch batcher;
+	private TextureRegion bg_ha;
+    
+	public static boolean touchBtn = false;
+	public General generalBtn;
+	public Weapon weaponBtn;
+	public Enemy enemyBtn;
+	public About aboutBtn;
+	public Back backBtn;
+	
+	public static TextureRegion p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11;
+	public static TextureRegion e1,e2,e3,e4,e5,e6,e7,e8;
+	
+	public static int nmbBtn = 0;
+	
+	public float gameWidth,gameHeight, wx,wy,wy1,wy2,wy3,wy4, wWidth, wHeight;
+	
+	public HelpAboutRenderer(HelpAboutWorld world, float width, float height, MySHgame game){
+		myWorld = world;
+		gameWidth = width;
+		gameHeight = height;
+        this.game = game;
+        
+        generalBtn = world.getGeneralBtn();
+        weaponBtn = world.getWeaponBtn();
+        enemyBtn = world.getEnemyBtn();
+        aboutBtn = world.getAboutBtn();
+        backBtn = world.getBackBtn();
+        
+        wx=generalBtn.wx;
+	    wy=generalBtn.wy;
+	    wWidth=generalBtn.btnWidth;
+	    wHeight=generalBtn.btnHeight;
+	    
+	    wy1=weaponBtn.wy;
+	    wy2=enemyBtn.wy;
+	    wy3=aboutBtn.wy;
+	    wy4=backBtn.wy;
+	    
+		cam = new OrthographicCamera();
+	    cam.setToOrtho(true, width, height);
+	    
+	    batcher = new SpriteBatch();
+        batcher.setProjectionMatrix(cam.combined);
+        
+	    shapeRenderer = new ShapeRenderer();
+	    shapeRenderer.setProjectionMatrix(cam.combined);
+	    
+	    initAssets();
+	}
+	
+	private void initAssets() {
+        bg_ha = AssetLoader.bg_ha;
+	}
+	
+	public void render(){
+        
+		Gdx.app.log("HelpAboutRenderer", "render");
+		batcher.begin();
+        batcher.disableBlending();
+        batcher.draw(bg_ha, 0, 0, gameWidth, gameHeight);
+        batcher.end();
+        
+	}
+}

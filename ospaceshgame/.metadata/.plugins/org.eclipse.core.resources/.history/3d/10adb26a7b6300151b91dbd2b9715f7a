@@ -1,0 +1,110 @@
+package com.shgame.helpaboutworld;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.shgame.game.MySHgame;
+import com.shgame.shhelpers.AssetLoader;
+import com.shgame.uiHelpAbout.About;
+import com.shgame.uiHelpAbout.Back;
+import com.shgame.uiHelpAbout.Enemy;
+import com.shgame.uiHelpAbout.General;
+import com.shgame.uiHelpAbout.Weapon;
+
+
+public class HelpAboutRenderer {
+
+	private MySHgame game;
+	private HelpAboutWorld myWorld;
+	private OrthographicCamera cam;
+	private ShapeRenderer shapeRenderer;
+	private SpriteBatch batcher;
+	private TextureRegion bg_ha;
+    
+	public static boolean touchBtn = false;
+	public General myGeneralBtn;
+	public Weapon myWeaponBtn;
+	public Enemy myEnemyBtn;
+	public About myAboutBtn;
+	public Back myBackBtn;
+	
+	public static TextureRegion p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11;
+	public static TextureRegion e1,e2,e3,e4,e5,e6,e7,e8;
+	
+	public static TextureRegion generalBtn, generalBtnDown;
+    public static TextureRegion weaponBtn, weaponBtnDown;
+    public static TextureRegion enemyBtn, enemyBtnDown;
+    public static TextureRegion aboutBtn, aboutBtnDown;
+    public static TextureRegion backBtn, backBtnDown;    
+    
+	public static int nmbBtn = 0;
+	
+	public float gameWidth,gameHeight, wx,wy,wy1,wy2,wy3,wy4, wWidth, wHeight;
+	
+	public HelpAboutRenderer(HelpAboutWorld world, float width, float height, MySHgame game){
+		myWorld = world;
+		gameWidth = width;
+		gameHeight = height;
+        this.game = game;
+        
+        myGeneralBtn = world.getGeneralBtn();
+        myWeaponBtn = world.getWeaponBtn();
+        myEnemyBtn = world.getEnemyBtn();
+        myAboutBtn = world.getAboutBtn();
+        myBackBtn = world.getBackBtn();
+        
+        wx=myGeneralBtn.wx;
+	    wy=myGeneralBtn.wy;
+	    wWidth=myGeneralBtn.btnWidth;
+	    wHeight=myGeneralBtn.btnHeight;
+	    
+	    wy1=myWeaponBtn.wy;
+	    wy2=myEnemyBtn.wy;
+	    wy3=myAboutBtn.wy;
+	    wy4=myBackBtn.wy;
+	    
+		cam = new OrthographicCamera();
+	    cam.setToOrtho(true, width, height);
+	    
+	    batcher = new SpriteBatch();
+        batcher.setProjectionMatrix(cam.combined);
+        
+	    shapeRenderer = new ShapeRenderer();
+	    shapeRenderer.setProjectionMatrix(cam.combined);
+	    
+	    initAssets();
+	}
+	
+	private void initAssets() {
+        bg_ha = AssetLoader.bg_ha;
+        generalBtn = AssetLoader.generalBtn;
+        generalBtnDown = AssetLoader.generalBtnDown;
+        weaponBtn = AssetLoader.weaponBtn;
+        weaponBtnDown = AssetLoader.weaponBtnDown;
+        enemyBtn = AssetLoader.enemyBtn;
+        enemyBtnDown = AssetLoader.enemyBtnDown;
+        aboutBtn = AssetLoader.aboutBtn;
+        aboutBtnDown = AssetLoader.aboutBtnDown;
+        backBtn = AssetLoader.backBtn;
+        backBtnDown = AssetLoader.backBtnDown;
+	}
+	
+	public void render(){
+        
+		Gdx.app.log("HelpAboutRenderer", "render");
+		batcher.begin();
+        batcher.disableBlending();
+        batcher.draw(bg_ha, 0, 0, gameWidth, gameHeight);
+        
+        batcher.draw(generalBtn, wx, wy, wWidth, wHeight);
+        batcher.draw(weaponBtn, wx, wy1, wWidth, wHeight);
+        batcher.draw(enemyBtn, wx, wy2, wWidth, wHeight);
+        batcher.draw(aboutBtn, wx, wy3, wWidth, wHeight);
+        batcher.draw(backBtn, wx, wy4, wWidth, wHeight);
+        batcher.end();
+        
+	}
+}

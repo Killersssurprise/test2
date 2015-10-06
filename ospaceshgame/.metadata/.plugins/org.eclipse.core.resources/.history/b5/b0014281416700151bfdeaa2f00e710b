@@ -1,0 +1,16 @@
+package com.shgame.multiplayerworld;
+
+import com.shgame.uiMultiplayer.Back;
+
+public class MultiplayerWorld {
+
+	private Back backBtn;
+	
+	public MultiplayerWorld(){
+		
+	}
+	
+	public void update(){
+		
+	}
+}

@@ -1,0 +1,34 @@
+package com.shgame.uiSingleplay;
+
+import com.badlogic.gdx.math.Rectangle;
+
+public class Bullet {
+	
+	public static float btnWidth,btnHeight;
+	public static float wx,wy;
+	public Rectangle bounds;
+	
+	public Bullet(float width,float height){
+		btnWidth = 15;
+		btnHeight = 5;
+		wx = width/2 + Guy.btnWidth/2;
+		wy = height/2 + Guy.btnHeight/2;
+		
+		bounds = new Rectangle(wx, wy, btnWidth, btnHeight);
+	}
+	
+	public void update(float delta){
+
+	}
+	
+	public void offClick(){
+
+	}
+	
+	public void onClick(int touchX, int touchY){
+		if(bounds.contains(touchX, touchY))
+			{
+
+			}
+	}
+}

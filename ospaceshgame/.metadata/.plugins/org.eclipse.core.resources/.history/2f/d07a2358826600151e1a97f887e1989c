@@ -1,0 +1,330 @@
+package com.shgame.helpaboutworld;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.shgame.game.MySHgame;
+import com.shgame.shhelpers.AssetLoader;
+import com.shgame.uiHelpAbout.About;
+import com.shgame.uiHelpAbout.Back;
+import com.shgame.uiHelpAbout.Enemy;
+import com.shgame.uiHelpAbout.General;
+import com.shgame.uiHelpAbout.Weapon;
+import com.shgame.uiHelpAbout.uiEnemy.Enemy_1;
+import com.shgame.uiHelpAbout.uiEnemy.Enemy_2;
+import com.shgame.uiHelpAbout.uiEnemy.Enemy_3;
+import com.shgame.uiHelpAbout.uiEnemy.Enemy_4;
+import com.shgame.uiHelpAbout.uiEnemy.Enemy_5;
+import com.shgame.uiHelpAbout.uiEnemy.Enemy_6;
+import com.shgame.uiHelpAbout.uiEnemy.Enemy_7;
+import com.shgame.uiHelpAbout.uiEnemy.Enemy_8;
+import com.shgame.uiHelpAbout.uiWeapon.People_1;
+import com.shgame.uiHelpAbout.uiWeapon.People_2;
+import com.shgame.uiHelpAbout.uiWeapon.People_3;
+import com.shgame.uiHelpAbout.uiWeapon.People_4;
+import com.shgame.uiHelpAbout.uiWeapon.People_5;
+import com.shgame.uiHelpAbout.uiWeapon.People_6;
+import com.shgame.uiHelpAbout.uiWeapon.People_7;
+import com.shgame.uiHelpAbout.uiWeapon.People_8;
+import com.shgame.uiHelpAbout.uiWeapon.People_9;
+import com.shgame.uiHelpAbout.uiWeapon.People_10;
+import com.shgame.uiHelpAbout.uiWeapon.People_11;
+
+
+public class HelpAboutRenderer {
+
+	private MySHgame game;
+	private HelpAboutWorld myWorld;
+	private OrthographicCamera cam;
+	private ShapeRenderer shapeRenderer;
+	private SpriteBatch batcher,spriteBatcher;
+	private TextureRegion bg_ha;
+    
+	public static boolean touchBtn = false;
+	public General myGeneralBtn;
+	public Weapon myWeaponBtn;
+	public Enemy myEnemyBtn;
+	public About myAboutBtn;
+	public Back myBackBtn;
+	
+	public static TextureRegion p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11;
+	public static TextureRegion e1,e2,e3,e4,e5,e6,e7,e8;
+	
+	public static TextureRegion generalBtn, generalBtnDown;
+    public static TextureRegion weaponBtn, weaponBtnDown;
+    public static TextureRegion enemyBtn, enemyBtnDown;
+    public static TextureRegion aboutBtn, aboutBtnDown;
+    public static TextureRegion backBtn, backBtnDown;    
+    
+    public static BitmapFont text;
+    
+	public static int nmbBtn = 0;
+	
+	public float gameWidth,gameHeight, wx,wy,wy1,wy2,wy3,wy4, wWidth, wHeight;
+	
+	public float px,px1,px2,px3,px4,px5,px6,px7,px8,px9,px10;
+	public float ex,ex1,ex2,ex3,ex4,ex5,ex6,ex7;
+	public float ey, py;
+	public Enemy_1 enemy1;
+	public Enemy_2 enemy2;
+	public Enemy_3 enemy3;
+	public Enemy_4 enemy4;
+	public Enemy_5 enemy5;
+	public Enemy_6 enemy6;
+	public Enemy_7 enemy7;
+	public Enemy_8 enemy8;
+	
+	public People_1 people1;
+	public People_2 people2;
+	public People_3 people3;
+	public People_4 people4;
+	public People_5 people5;
+	public People_6 people6;
+	public People_7 people7;
+	public People_8 people8;
+	public People_9 people9;
+	public People_10 people10;
+	public People_11 people11;
+	
+	public float pWidth,pHeight,eWidth,eHeight;
+	
+	public HelpAboutRenderer(HelpAboutWorld world, float width, float height, MySHgame game){
+		myWorld = world;
+		gameWidth = width;
+		gameHeight = height;
+        this.game = game;
+        
+        initAssets();
+        
+        myGeneralBtn = world.getGeneralBtn();
+        myWeaponBtn = world.getWeaponBtn();
+        myEnemyBtn = world.getEnemyBtn();
+        myAboutBtn = world.getAboutBtn();
+        myBackBtn = world.getBackBtn();
+        
+        enemy1 = world.getEnemy_1Btn();
+        enemy2 = world.getEnemy_2Btn();
+        enemy3 = world.getEnemy_3Btn();
+        enemy4 = world.getEnemy_4Btn();
+        enemy5 = world.getEnemy_5Btn();
+        enemy6 = world.getEnemy_6Btn();
+        enemy7 = world.getEnemy_7Btn();
+        enemy8 = world.getEnemy_8Btn();
+        
+        people1 = world.getPeople_1Btn();
+        people2 = world.getPeople_2Btn();
+        people3 = world.getPeople_3Btn();
+        people4 = world.getPeople_4Btn();
+        people5 = world.getPeople_5Btn();
+        people6 = world.getPeople_6Btn();
+        people7 = world.getPeople_7Btn();
+        people8 = world.getPeople_8Btn();
+        people9 = world.getPeople_9Btn();
+        people10 = world.getPeople_10Btn();
+        people11 = world.getPeople_11Btn();
+        
+        wx=myGeneralBtn.wx;
+	    wy=myGeneralBtn.wy;
+	    
+	    wWidth=myGeneralBtn.btnWidth;
+	    wHeight=myGeneralBtn.btnHeight;
+	    
+	    wy1=myWeaponBtn.wy;
+	    wy2=myEnemyBtn.wy;
+	    wy3=myAboutBtn.wy;
+	    wy4=myBackBtn.wy;
+	    
+	    ey = enemy1.wy;
+		
+	    ex = enemy1.wx;
+		ex1 = enemy2.wx;
+		ex2 = enemy3.wx;
+		ex3 = enemy4.wx;
+		ex4 = enemy5.wx;
+		ex5 = enemy6.wx;
+		ex6 = enemy7.wx;
+		ex7 = enemy8.wx;
+
+		eWidth = enemy1.btnWidth;
+		eHeight = enemy1.btnHeight;
+		
+		py = gameHeight / (float)5.517;
+		
+		px1 = p1.getRegionWidth();
+		px2 = px1 + p2.getRegionWidth();
+		px3 = px2 + p3.getRegionWidth();
+		px4 = px3 + p4.getRegionWidth();
+		px5 = px4 + p5.getRegionWidth();
+		px6 = px5 + p6.getRegionWidth();
+		px7 = px6 + p7.getRegionWidth();
+		px8 = px7 + p8.getRegionWidth();
+		px9 = px8 + p9.getRegionWidth();
+		px10 = px9 + p10.getRegionWidth();
+		
+		
+		cam = new OrthographicCamera();
+	    cam.setToOrtho(true, width, height);
+	    
+	    batcher = new SpriteBatch();
+        batcher.setProjectionMatrix(cam.combined);
+        
+        spriteBatcher = new SpriteBatch();
+        spriteBatcher.setProjectionMatrix(cam.combined);
+        
+	    shapeRenderer = new ShapeRenderer();
+	    shapeRenderer.setProjectionMatrix(cam.combined);
+	    
+	}
+	
+	private void initAssets() {
+        bg_ha = AssetLoader.bg_ha;
+        generalBtn = AssetLoader.generalBtn;
+        generalBtnDown = AssetLoader.generalBtnDown;
+        weaponBtn = AssetLoader.weaponBtn;
+        weaponBtnDown = AssetLoader.weaponBtnDown;
+        enemyBtn = AssetLoader.enemyBtn;
+        enemyBtnDown = AssetLoader.enemyBtnDown;
+        aboutBtn = AssetLoader.aboutBtn;
+        aboutBtnDown = AssetLoader.aboutBtnDown;
+        backBtn = AssetLoader.backBtn;
+        backBtnDown = AssetLoader.backBtnDown;
+        text = AssetLoader.text;
+        e1 = AssetLoader.e1;
+        e2 = AssetLoader.e2;
+        e3 = AssetLoader.e3;
+        e4 = AssetLoader.e4;
+        e5 = AssetLoader.e5;
+        e6 = AssetLoader.e6;
+        e7 = AssetLoader.e7;
+        e8 = AssetLoader.e8;
+        p1 = AssetLoader.p1;
+        p2 = AssetLoader.p2;
+        p3 = AssetLoader.p3;
+        p4 = AssetLoader.p4;
+        p5 = AssetLoader.p5;
+        p6 = AssetLoader.p6;
+        p7 = AssetLoader.p7;
+        p8 = AssetLoader.p8;
+        p9 = AssetLoader.p9;
+        p10 = AssetLoader.p10;
+        p11 = AssetLoader.p11;
+	}
+	
+	public void render(){
+        
+		batcher.begin();
+        
+		startHA();
+        
+        clickBtn();
+        
+        batcher.end();
+        
+	}
+	
+	public void startHA(){
+		batcher.disableBlending();
+        batcher.draw(bg_ha, 0, 0, gameWidth, gameHeight);
+        
+        batcher.draw(generalBtn, wx, wy, wWidth, wHeight);
+        batcher.draw(weaponBtn, wx, wy1, wWidth, wHeight);
+        batcher.draw(enemyBtn, wx, wy2, wWidth, wHeight);
+        batcher.draw(aboutBtn, wx, wy3, wWidth, wHeight);
+        batcher.draw(backBtn, wx, wy4, wWidth, wHeight);
+	}
+	
+	public void clickBtn(){
+		 if(touchBtn)
+	        	switch(nmbBtn){
+	        	case 1:
+	        		batcher.draw(generalBtnDown, wx, wy, wWidth, wHeight);
+	        		render_general();
+	        		break;
+	        	case 2:	
+	        		batcher.draw(weaponBtnDown, wx, wy1, wWidth, wHeight);
+	        		render_weapon();
+	        		break;
+	        	case 3:	
+	        		batcher.draw(enemyBtnDown, wx, wy2, wWidth, wHeight);
+	        		render_enemy();
+	        		break;
+	        	case 4:	
+	        		batcher.draw(aboutBtnDown, wx, wy3, wWidth, wHeight);
+	        		render_about();
+	        		break;
+	        	case 5:
+	        		batcher.draw(backBtnDown, wx, wy4, wWidth, wHeight);
+	        		touchBtn = false;
+	        		game.setScreen(game.menu);
+	        		break;
+	        	default:
+	        		break;
+	        	}
+	}
+	
+	public void render_general(){
+		String str = "The objective oh the game is to prevent the seals";
+		String str1 = "and other arctic creatures from reaching the ocean";
+		String str2 = "where they eat our fish and mate and reproduce";
+		text.getData().setScale(1f, -1f);
+		batcher.enableBlending();
+		text.draw(batcher, str, 25, 160);
+		text.draw(batcher, str1, 25, 175);
+		text.draw(batcher, str2, 25, 190);
+	}
+	
+	public void render_about(){
+		String str = "The original game and multiplayer on PC";
+		String str1 = "you can find there:";
+		String str2 = "http://sealhunter.se/";
+		String str3 = "http://sealhunter.com/";
+		String str4 = "http://sealhunter.ru/";
+		String str5 = "The author of this app on android:";
+		String str6 = "people@gmail.com";
+		String str7 = "Thanks for helps: bla bla bla";
+		
+		batcher.enableBlending();
+		text.getData().setScale(1f, -1f);
+		text.draw(batcher, str, 25, 160);
+		text.draw(batcher, str1, 25, 175);
+		text.draw(batcher, str2, 25, 190);
+		text.draw(batcher, str3, 25, 205);
+		text.draw(batcher, str4, 25, 220);
+		text.draw(batcher, str5, 25, 235);
+		text.draw(batcher, str6, 25, 250);
+		text.draw(batcher, str7, 25, 265);
+	}
+	
+	public void render_enemy(){
+		
+		batcher.enableBlending();
+		batcher.draw(e1, ex, ey, eWidth, eHeight);
+        batcher.draw(e2, ex1, ey, eWidth, eHeight);
+		batcher.draw(e3, ex2, ey, eWidth, eHeight);
+		batcher.draw(e4, ex3, ey, eWidth, eHeight);
+		batcher.draw(e5, ex4, ey, eWidth, eHeight);
+		batcher.draw(e6, ex5, ey, eWidth, eHeight);
+		batcher.draw(e7, ex6, ey, eWidth, eHeight);
+		batcher.draw(e8, ex7, ey, eWidth, eHeight);
+	}
+	
+	public void render_weapon(){
+		
+		batcher.enableBlending();
+		batcher.draw(p1, 0, py, p1.getRegionWidth(), p1.getRegionHeight());
+		batcher.draw(p2, px1, py, p2.getRegionWidth(), p2.getRegionHeight());
+		batcher.draw(p3, px2, py, p3.getRegionWidth(), p3.getRegionHeight());
+		batcher.draw(p4, px3, py, p4.getRegionWidth(), p4.getRegionHeight());
+		batcher.draw(p5, px4, py, p5.getRegionWidth(), p5.getRegionHeight());
+		batcher.draw(p6, px5, py, p6.getRegionWidth(), p6.getRegionHeight());
+		batcher.draw(p7, px6, py, p7.getRegionWidth(), p7.getRegionHeight());
+		batcher.draw(p8, px7, py, p8.getRegionWidth(), p8.getRegionHeight());
+		batcher.draw(p9, px8, py, p9.getRegionWidth(), p9.getRegionHeight());
+		batcher.draw(p10, px9, py, p10.getRegionWidth(), p10.getRegionHeight());
+		batcher.draw(p11, px10, py, p11.getRegionWidth(), p11.getRegionHeight());
+	}
+	
+}

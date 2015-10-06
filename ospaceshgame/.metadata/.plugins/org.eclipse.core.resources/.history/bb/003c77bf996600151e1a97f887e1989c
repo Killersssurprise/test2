@@ -1,0 +1,167 @@
+package com.shgame.shhelpers;
+
+import com.badlogic.gdx.InputProcessor;
+import com.shgame.game.MySHgame;
+import com.shgame.ui.HelpAbout;
+import com.shgame.ui.MultiPlayer;
+import com.shgame.ui.Options;
+import com.shgame.ui.SinglePlay;
+import com.shgame.uiHelpAbout.About;
+import com.shgame.uiHelpAbout.Back;
+import com.shgame.uiHelpAbout.Enemy;
+import com.shgame.uiHelpAbout.General;
+import com.shgame.uiHelpAbout.Weapon;
+import com.shgame.uiHelpAbout.uiEnemy.Enemy_1;
+import com.shgame.uiHelpAbout.uiEnemy.Enemy_2;
+import com.shgame.uiHelpAbout.uiEnemy.Enemy_3;
+import com.shgame.uiHelpAbout.uiEnemy.Enemy_4;
+import com.shgame.uiHelpAbout.uiEnemy.Enemy_5;
+import com.shgame.uiHelpAbout.uiEnemy.Enemy_6;
+import com.shgame.uiHelpAbout.uiEnemy.Enemy_7;
+import com.shgame.uiHelpAbout.uiEnemy.Enemy_8;
+import com.shgame.uiHelpAbout.uiWeapon.People_1;
+import com.shgame.uiHelpAbout.uiWeapon.People_2;
+import com.shgame.uiHelpAbout.uiWeapon.People_3;
+import com.shgame.uiHelpAbout.uiWeapon.People_4;
+import com.shgame.uiHelpAbout.uiWeapon.People_5;
+import com.shgame.uiHelpAbout.uiWeapon.People_6;
+import com.shgame.uiHelpAbout.uiWeapon.People_7;
+import com.shgame.uiHelpAbout.uiWeapon.People_8;
+import com.shgame.uiHelpAbout.uiWeapon.People_9;
+import com.shgame.uiHelpAbout.uiWeapon.People_10;
+import com.shgame.uiHelpAbout.uiWeapon.People_11;
+
+public class InputHandler implements InputProcessor{
+
+	public SinglePlay mySPBtn;
+	public MultiPlayer myMPBtn;
+	public Options myOPBtn;
+	public HelpAbout myHABtn;
+	public MySHgame game;
+	public General myGeneralBtn;
+	public Weapon myWeaponBtn;
+	public Enemy myEnemyBtn;
+	public About myAboutBtn;
+	public Back myBackBtn;
+	public Enemy_1 enemyBtn1;
+	public Enemy_2 enemyBtn2;
+	public Enemy_3 enemyBtn3;
+	public Enemy_4 enemyBtn4;
+	public Enemy_5 enemyBtn5;
+	public Enemy_6 enemyBtn6;
+	public Enemy_7 enemyBtn7;
+	public Enemy_8 enemyBtn8;
+	public People_1 peopleBtn1;
+	public People_2 peopleBtn2;
+	public People_3 peopleBtn3;
+	public People_4 peopleBtn4;
+	public People_5 peopleBtn5;
+	public People_6 peopleBtn6;
+	public People_7 peopleBtn7;
+	public People_8 peopleBtn8;
+	public People_9 peopleBtn9;
+	public People_10 peopleBtn10;
+	public People_11 peopleBtn11;
+	
+	public InputHandler(MySHgame game, SinglePlay spBtn, MultiPlayer mpBtn, Options opBtn, HelpAbout haBtn,
+			General general, Weapon weapon, Enemy enemy, About about, Back back) {
+        mySPBtn = spBtn;
+        myMPBtn = mpBtn;
+        myOPBtn = opBtn;
+        myHABtn = haBtn;
+        this.game = game;
+        myGeneralBtn = general;
+		myWeaponBtn = weapon;
+		myEnemyBtn = enemy;
+		myAboutBtn = about;
+		myBackBtn = back;
+    }
+	
+	@Override
+	public boolean keyDown(int keycode) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean keyUp(int keycode) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean keyTyped(char character) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		// TODO Auto-generated method stub
+		if(game.getScreen().toString().contains("GameScreen")){
+			mySPBtn.onClick(screenX, screenY);
+			myMPBtn.onClick(screenX, screenY);
+			myOPBtn.onClick(screenX, screenY);
+			myHABtn.onClick(screenX, screenY);
+		}
+		try {
+			Thread.sleep(100, 0);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(game.getScreen().toString().contains("HelpAboutScreen")){
+			myGeneralBtn.onClick(screenX, screenY);
+			myWeaponBtn.onClick(screenX, screenY);
+			myEnemyBtn.onClick(screenX, screenY);
+			myAboutBtn.onClick(screenX, screenY);
+			myBackBtn.onClick(screenX, screenY);
+		}
+		return true;
+	}
+
+	@Override
+	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+		// TODO Auto-generated method stub
+		if(game.getScreen().toString().contains("GameScreen")){
+			mySPBtn.offClick();
+			myMPBtn.offClick();
+			myOPBtn.offClick();
+			myHABtn.offClick();
+		}
+		try {
+			Thread.sleep(100, 0);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}/*
+		if(game.getScreen().toString().contains("HelpAboutScreen")){
+			myGeneralBtn.offClick();
+			myWeaponBtn.offClick();
+			myEnemyBtn.offClick();
+			myAboutBtn.offClick();
+			myBackBtn.offClick();
+		}*/
+		return true;
+	}
+
+	@Override
+	public boolean touchDragged(int screenX, int screenY, int pointer) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean mouseMoved(int screenX, int screenY) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean scrolled(int amount) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+
+}

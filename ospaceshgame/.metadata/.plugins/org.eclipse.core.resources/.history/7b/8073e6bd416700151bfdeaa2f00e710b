@@ -1,0 +1,20 @@
+package com.shgame.multiplayerworld;
+
+import com.shgame.uiMultiplayer.Back;
+
+public class MultiplayerWorld {
+
+	private Back backBtn;
+	
+	public MultiplayerWorld(float width, float height){
+		
+	}
+	
+	public void update(delta){
+		
+	}
+	
+	public Back getBackBtn(){
+		return backBtn;
+	}
+}

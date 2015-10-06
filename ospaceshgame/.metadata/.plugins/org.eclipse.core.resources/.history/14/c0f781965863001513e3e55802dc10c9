@@ -1,0 +1,62 @@
+package com.shgame.helpaboutworld;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.shgame.shhelpers.AssetLoader;
+
+
+public class HelpAboutRenderer {
+
+	private HelpAboutWorld myWorld;
+	private OrthographicCamera cam;
+	private ShapeRenderer shapeRenderer;
+	private SpriteBatch batcher;
+	private TextureRegion bg_ha;
+	
+	public float gameWidth,gameHeight;
+	
+	public HelpAboutRenderer(HelpAboutWorld world, float width, float height){
+		myWorld = world;
+		gameWidth = width;
+		gameHeight = height;
+		
+		cam = new OrthographicCamera();
+	    cam.setToOrtho(true, width, height);
+	    
+	    batcher = new SpriteBatch();
+        batcher.setProjectionMatrix(cam.combined);
+        
+	    shapeRenderer = new ShapeRenderer();
+	    shapeRenderer.setProjectionMatrix(cam.combined);
+	    
+	    initAssets();
+	}
+	
+	private void initAssets() {
+        bg_ha = AssetLoader.bg_ha;
+	}
+	
+	public void render(){
+		SpriteBatch spriteBatch;
+        BitmapFont font;
+        
+        spriteBatch = new SpriteBatch();
+        font = new BitmapFont();
+        
+		Gdx.app.log("HelpAboutRenderer", "render");
+		batcher.begin();
+        batcher.disableBlending();
+        batcher.draw(bg_ha, 0, 0, gameWidth, gameHeight);
+        font.draw(batcher, "Hello", gameWidth/4, gameHeight/2);
+        batcher.end();
+        
+
+        spriteBatch.begin();
+        font.draw(spriteBatch, "Hello world", gameWidth/3, gameHeight/2);
+        spriteBatch.end();
+	}
+}

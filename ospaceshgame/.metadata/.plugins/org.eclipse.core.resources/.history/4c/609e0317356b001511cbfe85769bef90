@@ -1,0 +1,69 @@
+package com.shgame.uiSingleplay;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Rectangle;
+import com.shgame.shhelpers.AssetLoader;
+import com.shgame.singleplay.SinglePlayRenderer;
+
+public class Seal {
+
+	public float wWidth, wHeight;
+	public float wx, wy;
+	public static Rectangle bounds;
+	public float gameWidth, gameHeight;
+	public static boolean alive = true;
+	public float i_height = 0 ;
+	public static boolean flag_height = true;
+	
+	public Seal(float width, float height){
+		
+		gameWidth = width;
+		gameHeight = height;
+		
+	    wWidth = width/10;
+	    wHeight = height/10;
+	    wx = 0 - wWidth;
+	    wy = height/2;
+	    
+	    bounds = new Rectangle(wx, wy, wWidth, wHeight);
+	}
+	
+	public void update(float delta){
+		
+		bounds.x = SinglePlayRenderer.sx;
+		bounds.y = SinglePlayRenderer.sy;
+		
+		if(alive)
+		{
+			SinglePlayRenderer.sx++;
+			if(SinglePlayRenderer.sx > gameWidth)
+				SinglePlayRenderer.sx = wx;
+			
+			if(flag_height)
+			{
+				i_height += 0.5;
+				SinglePlayRenderer.sy += i_height;
+				if(i_height > wHeight/4)
+				{
+					flag_height = false;
+					i_height = 0;
+				}
+			}
+			else
+			{	
+				i_height += 0.5;
+				SinglePlayRenderer.sy -= i_height;
+				if(i_height > wHeight/4)
+				{
+					flag_height = true;
+					i_height = 0;
+				}
+			}			
+		}
+		
+	}
+}

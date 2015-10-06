@@ -1,0 +1,74 @@
+package com.shgame.gameworld;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.shgame.shhelpers.AssetLoader;
+
+public class GameRenderer {
+
+	private GameWorld myWorld;
+	private OrthographicCamera cam;
+	private ShapeRenderer shapeRenderer;
+	private SpriteBatch batcher;
+	private TextureRegion bg;
+	public static TextureRegion singlePlayBtn,singlePlayBtnDown;
+    public static TextureRegion multiPlayerBtn,multiPlayerBtnDown;
+    public static TextureRegion optionsBtn,optionsBtnDown;
+    public static TextureRegion helpAboutBtn,helpAboutBtnDonw;
+    
+	public float gameWidth,gameHeight, wx,wy,wy1,wy2,wy3, wWidth, wHeight;
+	
+	public GameRenderer(GameWorld world, float width, float height) {
+	    myWorld = world;
+	    gameWidth=width;
+	    gameHeight=height;
+	    wx=gameWidth-gameWidth/3;
+	    wy=gameHeight/2;
+	    wWidth=gameWidth/5;
+	    wHeight=gameHeight/12;
+	    
+	    wy1=wy+wWidth+5;
+	    wy2=wy1+wWidth+5;
+	    wy3=wy2+wWidth+5;
+	    
+	    cam = new OrthographicCamera();
+	    cam.setToOrtho(true, width, height);
+	    
+	    batcher = new SpriteBatch();
+        batcher.setProjectionMatrix(cam.combined);
+        
+	    shapeRenderer = new ShapeRenderer();
+	    shapeRenderer.setProjectionMatrix(cam.combined);
+	    
+	    initAssets();
+	}
+	
+	private void initAssets() {
+        bg = AssetLoader.bg;
+        singlePlayBtn = AssetLoader.singlePlayBtn;
+        singlePlayBtnDown = AssetLoader.singlePlayBtnDown;
+        multiPlayerBtn = AssetLoader.multiPlayerBtn;
+        multiPlayerBtnDown = AssetLoader.multiPlayerBtnDown;
+        optionsBtn = AssetLoader.optionsBtn;
+        optionsBtnDown = AssetLoader.optionsBtnDown;
+        helpAboutBtn = AssetLoader.helpAboutBtn;
+        helpAboutBtnDonw = AssetLoader.helpAboutBtnDown;
+	}
+	
+	public void render() {
+	    Gdx.app.log("GameRenderer", "render");
+	    batcher.begin();
+        batcher.disableBlending();
+        batcher.draw(bg, 0, 0, gameWidth, gameHeight);
+        
+        batcher.draw(singlePlayBtn, wx, wy, wWidth, wHeight);
+        batcher.draw(multiPlayerBtn, wx, wy1, wWidth, wHeight);
+        batcher.draw(optionsBtn, wx, wy2, wWidth, wHeight);
+        batcher.draw(helpAboutBtn, wx, wy3, wWidth, wHeight);
+        batcher.end();
+
+	}
+}

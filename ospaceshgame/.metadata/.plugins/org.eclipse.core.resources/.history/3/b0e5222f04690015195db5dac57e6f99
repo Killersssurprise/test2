@@ -1,0 +1,135 @@
+package com.shgame.singleplay;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Rectangle;
+import com.shgame.shhelpers.AssetLoader;
+import com.shgame.uiSingleplay.Bullet;
+import com.shgame.uiSingleplay.Control;
+import com.shgame.uiSingleplay.Fire;
+import com.shgame.uiSingleplay.Guy;
+import com.shgame.uiSingleplay.Reload;
+import com.shgame.uiSingleplay.Seal;
+
+public class SinglePlayRenderer {
+
+	private SinglePlayWorld myWorld;
+	private OrthographicCamera cam;
+	private ShapeRenderer shapeRenderer;
+	private SpriteBatch batcher;
+	private TextureRegion bg_sp, reload, control, guy, fire;
+	private TextureRegion bullet, snip;
+	private TextureRegion regSeal;
+	
+	public Control controlBtn;
+	public Fire fireBtn;
+	public Reload reloadBtn;
+	public Guy guyBtn;
+	public Bullet bul;
+	public Seal seal;
+	
+	public Rectangle boundSeal, boundBul;
+	
+	public float gameWidth,gameHeight;
+	public float rx,ry,rWidth,rHeight;
+	public float cx, cy, cWidth, cHeight;
+	public static float gx, gy, gWidth, gHeight;
+	public float fx, fy, fWidth, fHeight;
+	public static float bx, by, bWidth, bHeight;
+	public static float sx, sy, sWidth, sHeight;
+	
+	public SinglePlayRenderer(SinglePlayWorld world, float width, float height){
+		myWorld = world;
+		gameWidth = width;
+		gameHeight = height;
+		
+		cam = new OrthographicCamera();
+	    cam.setToOrtho(true, width, height);
+	    
+	    batcher = new SpriteBatch();
+        batcher.setProjectionMatrix(cam.combined);
+        
+	    shapeRenderer = new ShapeRenderer();
+	    shapeRenderer.setProjectionMatrix(cam.combined);
+	    
+	    initAssets();
+	    
+	    controlBtn = world.getControlBtn();
+	    fireBtn = world.getFireBtn();
+	    reloadBtn = world.getReloadBtn();
+	    guyBtn = world.getGuyBtn();
+	    bul = world.getBul();
+	    seal = world.getSeal();
+	    
+	    cx = controlBtn.wx;
+	    cy = controlBtn.wy;
+	    cWidth = controlBtn.btnWidth;
+	    cHeight = controlBtn.btnHeight;
+	    
+	    rx = reloadBtn.wx;
+	    ry = reloadBtn.wy;
+	    rWidth = reloadBtn.btnWidth;
+	    rHeight = reloadBtn.btnHeight;
+	    
+		gx = guyBtn.wx;
+	    gy = guyBtn.wy;
+	    gWidth = guyBtn.btnWidth;
+	    gHeight = guyBtn.btnHeight;
+	    
+	    fx = fireBtn.wx;
+	    fy = fireBtn.wy;
+	    fWidth = fireBtn.btnWidth;
+	    fHeight = fireBtn.btnHeight;
+	    
+	    bx = bul.wx;
+	    by = bul.wy;
+	    bWidth = bul.btnWidth;
+	    bHeight = bul.btnHeight;
+	    
+	    sx = seal.wx;
+	    sy = seal.wy;
+	    sWidth = seal.wWidth;
+	    sHeight = seal.wHeight;
+	    
+	    boundSeal = seal.bounds;
+	    boundBul = bul.bounds;
+	}
+	
+	private void initAssets() {
+        bg_sp = AssetLoader.bg_sp;
+        guy = AssetLoader.p11;
+        control = AssetLoader.control;
+        fire = AssetLoader.fire;
+        reload = AssetLoader.reload;
+        bullet = AssetLoader.bullet;
+        snip = AssetLoader.snip;
+        regSeal = AssetLoader.seal;
+	}
+	
+	public void render(){
+		
+		Gdx.app.log("bulshit", "seal.alive: " + seal.alive + " boundSeal.x: " + boundSeal.x + " boundSeal.y: " + boundSeal.y);
+		Gdx.app.log("bulshit", "boudBul.x: " + boundBul.x + " boundBul.y: " + boundBul.y);
+		batcher.begin();
+        batcher.disableBlending();
+        batcher.draw(bg_sp, 0, 0, gameWidth, gameHeight);
+        batcher.enableBlending();
+        batcher.draw(control, cx, cy, cWidth, cHeight);
+        batcher.draw(reload, rx, ry, rWidth, rHeight);
+        batcher.draw(fire, fx, fy, fWidth, fHeight);
+        batcher.draw(snip, gx-gWidth, gy+(gHeight/3), 10, 10);
+        batcher.draw(bullet, bx, by, bWidth, bHeight);
+        batcher.draw(guy, gx, gy, gWidth, gHeight);
+        
+        batcher.draw(regSeal, sx, sy, sWidth, sHeight);
+        
+        if(boundSeal.contains(bx, by))
+        	seal.alive = false;
+        	
+        
+        batcher.end();
+	}
+}

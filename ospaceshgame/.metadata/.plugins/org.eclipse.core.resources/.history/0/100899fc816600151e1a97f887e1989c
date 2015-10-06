@@ -1,0 +1,45 @@
+package com.shgame.uiHelpAbout.uiWeapon;
+
+import com.badlogic.gdx.math.Rectangle;
+
+public class People_9 {
+	public float btnWidth,btnHeight;
+	public float wx,wy;
+	public Rectangle bounds;
+	
+	public People_9(float width, float height){
+		
+		bounds = new Rectangle(wx, wy, btnWidth, btnHeight);
+	}
+	
+	public void setWx(float wx){
+		this.wx = wx;
+	}
+	
+	public void setWy(float wy){
+		this.wy = wy;
+	}
+	
+	public void setBtnWidth(float btnWidth){
+		this.btnWidth = btnWidth;
+	}
+	
+	public void setBtnHeight(float btnHeight){
+		this.btnHeight = btnHeight;
+	}
+	
+	public void update(float delta){
+		
+	}
+	
+	public void offClick(){
+
+	}
+	
+	public void onClick(int touchX, int touchY){
+		if(bounds.contains(touchX, touchY))
+			{
+
+			}
+	}
+}

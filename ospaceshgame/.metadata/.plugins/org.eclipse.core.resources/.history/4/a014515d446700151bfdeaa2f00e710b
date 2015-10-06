@@ -1,0 +1,50 @@
+package com.shgame.multiplayerworld;
+
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.shgame.game.MySHgame;
+import com.shgame.uiMultiplayer.Back;
+
+
+public class MultiplayerRenderer {
+
+	private MySHgame game;
+	private MultiplayerWorld myWorld;
+	private OrthographicCamera cam;
+	private ShapeRenderer shapeRenderer;
+	private SpriteBatch batcher,spriteBatcher;
+	
+	public Back myBackBtn;
+	public float gameWidth,gameHeight;
+	public static TextureRegion backBtn, backBtnDown;    
+    
+    public static BitmapFont text;
+	
+	public MultiplayerRenderer(MultiplayerWorld world, float width, float height, MySHgame game){
+		myWorld = world;
+		gameWidth = width;
+		gameHeight = height;
+        this.game = game;
+        
+        myBackBtn = world.getBackBtn();
+        
+        cam = new OrthographicCamera();
+	    cam.setToOrtho(true, width, height);
+	    
+	    batcher = new SpriteBatch();
+        batcher.setProjectionMatrix(cam.combined);
+        
+        spriteBatcher = new SpriteBatch();
+        spriteBatcher.setProjectionMatrix(cam.combined);
+        
+	    shapeRenderer = new ShapeRenderer();
+	    shapeRenderer.setProjectionMatrix(cam.combined);
+	}
+	
+	public void render(){
+        
+	}
+}
